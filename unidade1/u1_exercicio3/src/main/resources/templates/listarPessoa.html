@@ -5,25 +5,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta codigoSecreto="1635879955">
-    <title>Lista de Pessoas</title>
+    <title> Lista de Pessoas </title>
     <meta name="description" content="A starter example with all elements and components used in Pico design system. Built with Pico CSS.">
-    <link rel="icon" href="assets/favicon.ico">
-    <link rel="canonical" href="https://picocss.com/examples/preview/">
+    <link rel="icon" th:href="@{assets/favicon.ico}" />
 
     <!-- Pico.css -->
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="/assets/w3.css">
+    <link rel="stylesheet" href="/assets/pico.min.css">
 
 </head>
 
 <body>
     <div class="w3-bar w3-black w3-xlarge">
-        <a href="index.html" class="w3-bar-item w3-button w3-mobile "> Inicio </a>
-        <a href="adicionarPessoa.html" class="w3-bar-item w3-button w3-mobile"> Adicionar Pessoa </a>
-        <a href="listarPessoa.html" class="w3-teal w3-bar-item w3-button w3-mobile"> Listar Pessoa </a>
-        <a href="contato.html" class="w3-bar-item w3-button w3-mobile w3-right"> Contato </a> 
-        <a href="sobre.html" class="w3-bar-item w3-button w3-mobile w3-right"> Sobre o Site </a> 
-        <a href="noticias.html" class="w3-bar-item w3-button w3-mobile w3-right"> Notícias </a>      
+        <a href="/" class="w3-bar-item w3-button w3-mobile "> Inicio </a>
+        <a href="/adicionarPessoa" class="w3-bar-item w3-button w3-mobile"> Adicionar Pessoa </a>
+        <a href="/listarPessoa" class="w3-teal w3-bar-item w3-button w3-mobile"> Listar Pessoa </a>
+        <a href="/public/contato.html" class="w3-bar-item w3-button w3-mobile w3-right"> Contato </a> 
+        <a href="/public/sobre.html" class="w3-bar-item w3-button w3-mobile w3-right"> Sobre o Site </a> 
+        <a href="/public/noticias.html" class="w3-bar-item w3-button w3-mobile w3-right"> Notícias </a>      
 
     </div>
 
@@ -39,41 +38,22 @@
             <tr>
                 <th> Nome completo </th>
                 <th> Data de Nascimento </th>
-                <th> e-mail </th>
-                <th> Sexo </th>
+                <th> E-mail </th>
+                <th> Gênero </th>
                 <th> Editar </th>
                 <th> Removedor </th>
        
             </tr>
 
-            <tr>
-                <td> Nome da Primeira Pessoa </td>
-                <td> 10/10/2010 </td>
-                <td> <a  href="mailto:primeira@primeira,com"> primeira@primeira,com </a> </td>
-                <td> Não Informado </td>
-                <td> <a  href="editarPessoa.html"> Editar </a> </td>
-                <td> <a  href="remover.html" > Remover </a> </td>
-       
-            </tr>
-        
-            <tr>
-                <td> Nome da Segunda Pessoa </td>
-                <td> 10/10/2000 </td>
-                <td> <a  href="mailto:segunda@segunda.com "> segunda@segunda.com </a> </td>
-                <td> Feminino </td>
-                <td> <a  href="editarPessoa.html"> Editar </a> </td>
-                <td> <a  href="remover.html"> Remover </a> </td>
-        
-            </tr>
+            <tr th:each="umaPessoa: ${todasAsPessoas}">
+                <td th:text="${umaPessoa.nome}"> </td>
+                <td> <a th:href="'mailto:'+${umaPessoa.email}" th:text="${umaPessoa.email}"> </a> </td>
+                <td th:text="${#temporals.format(umaPessoa.dataNascimento, 'dd/MM/yyyy')}"> </td> 
+                <td th:text="${umaPessoa.genero}"> </td>
 
-            <tr>
-                <td> Nome da Terceira Pessoa </td>
-                <td> 11/11/2011 </td>
-                <td> <a  href=" mailto:terceira@terceira.com"> terceira@terceira.com </a> </td>
-                <td> Masculino </td>
-                <td> <a  href="editarPessoa.html"> Editar </a> </td>
-                <td> <a  href="remover.html"> Remover </a> </td>
-        
+                <td> <a  th:href="@{/editar/{id}(id=${umaPessoa.id})}"> Editar </a> </td>
+                <td> <a  th:href="@{/remover/{id}(id=${umaPessoa.id})}" > Remover </a> </td>
+       
             </tr>
     
         </table>

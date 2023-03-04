@@ -5,22 +5,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta codigoSecreto="1635879955">
-    <title>Meu Contato</title>
+    <title> Adicionar Pessoa </title>
     <meta name="description" content="A starter example with all elements and components used in Pico design system. Built with Pico CSS.">
-    <link rel="icon" type="image/x-icon" th:href="@{assets/favicon.ico}" />
+    <link rel="icon" th:href="@{assets/favicon.ico}" />
 
     <!-- Pico.css -->
-    <link rel="stylesheet" href="{/assets/pico.min.css}">
-    <link rel="stylesheet" href="{/assets/w3.css}">
+    <link rel="stylesheet" th:href="@{/assets/pico.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/w3.css}">
 
 </head>
 
 <body>
     <div class="w3-bar w3-black w3-xlarge">
         <a href="/" class="w3-bar-item w3-button w3-mobile "> Inicio </a>
-        <a href="/adicionarPessoa" class="w3-bar-item w3-button w3-mobile"> Adicionar Pessoa </a>
+        <a href="/adicionarPessoa" class="w3-teal w3-bar-item w3-button w3-mobile"> Adicionar Pessoa </a>
         <a href="/listarPessoa" class="w3-bar-item w3-button w3-mobile"> Listar Pessoa </a>
-        <a href="/public/contato.html" class="w3-teal w3-bar-item w3-button w3-mobile w3-right"> Contato </a> 
+        <a href="/public/contato.html" class="w3-bar-item w3-button w3-mobile w3-right"> Contato </a> 
         <a href="/public/sobre.html" class="w3-bar-item w3-button w3-mobile w3-right"> Sobre o Site </a> 
         <a href="/public/noticias.html" class="w3-bar-item w3-button w3-mobile w3-right"> Notícias </a>      
 
@@ -28,35 +28,44 @@
 
     <div style="padding:0 16px;">
 
-        <h1> Fomulário para cadastro de pessoas: </h1>
+        <h1> Fomulário para cadastrar pessoas: </h1>
     
-        <form action ="adicionadaComSucesso.html">
+        <form th:action="@{/adicionarPessoa}" method="POST" th:object="${pessoa}">
 
             <div class ="grid">
-                <label> Nome completo*: 
-                <input  type ="text" name ="nome" id ="nome" placeholder="Nome Completo" obrigatório>
+                <label for="nome"> Nome completo*:
+                    <input  type ="text" id ="nome" name ="nome" placeholder="Nome Completo" th:field="*{nome}" required>
                 </label>
                 
-                <label> e-mail*:
-                <input  type ="email " name ="mail " id ="mail " placeholder="nome@dominio.com " obrigatório> 
+                <label for="nome"> e-mail*:
+                    <input  type ="email" id ="mail" name ="email" placeholder="nome@dominio.com" th:field="*{email}" required> 
+                    <small> Nunca Divulgaremos </small>
                 </label>
                 
-                <label> Data de nascimento*: 
-                <input type ="date" nome ="date" id ="date" placeholder="dd/mm/aaaa" obrigatório>
+                <label for="dataNascimento"> Data de nascimento*: 
+                    <input type ="date" id ="dataNascimento" nome ="dataNascimento" placeholder="dd/mm/aaaa" th:field="*{dataNascimento}" required>
                 </label>
                
             </div>
 
-            <p> Informe o sexo*:</p>
-            <p><input type="radio" name="pessoa">Masculino</p>
-            <p><input type="radio" name="pessoa">Feminino</p>
-            <p><input type="radio" name="pessoa">Não Informar</p>
+            <legend> Gênero*: </legend>
+            <label for="Masculino">
+                <input type="radio" id="Masculino" name="genero" value="Masculino" th:field="*{genero}" required checked> Masculino
+            </label>
+            
+            <label for="Feminino">
+                <input type="radio" id="Feminino" name="genero" value="Feminino" th:field="*{genero}" required checked> Feminino
+            </label>
+
+            <label for="Não Informado">
+                <input type="radio" id="Não Informado" name="genero" value="Não Informado" required checked> Não Informado
+            </label>
         
             </div>
 
             <div class ="grid">
-                <input  type ="submit" value="Cadastrar!">
-                <input  type ="reset" value="Limpar" >
+                <div> <button type ="submit"> Cadastrar! </button> </div>
+                <div> <button type ="reset" class="secondary"> Limpar! </button> </div>
 
             </div>
 
