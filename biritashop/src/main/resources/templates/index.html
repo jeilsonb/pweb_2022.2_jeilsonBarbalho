@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A starter example with all elements and components used in Pico design system. Built with Pico CSS.">
+  <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
+  <link rel="canonical" href="https://picocss.com/examples/preview/">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+  <title>BiritaShop</title>
+</head>
+
+<body>
+
+  <div class="w3-bar w3-black w3-xlarge">
+    <a href="/" class="w3-yellow w3-bar-item w3-button w3-mobile "> Inicio </a>
+    <a class="w3-bar-item w3-button w3-mobile" href="/cliente/adicionar">Adicionar Cliente</a>
+    <a class="w3-bar-item w3-button w3-mobile" href="/dependente/adicionar">Adicionar Dependente</a>
+    <a class="w3-bar-item w3-button w3-mobile" href="/produto/adicionar">Adicionar Produto</a>
+    <a class="w3-bar-item w3-button w3-mobile w3-right" href="/public/contato">Contato</a>
+    <a class="w3-bar-item w3-button w3-mobile w3-right" href="/public/sobre">Sobre</a>
+  </div>
+
+  <div>
+		
+    <center>
+        <img th:src="@{/assets/biritashop.jpg}" class="d-block w-100" alt="biritashop" />
+    </center>
+
+  </div>
+    
+</body>
+
+</html>

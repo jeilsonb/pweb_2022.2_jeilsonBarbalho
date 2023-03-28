@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A starter example with all elements and components used in Pico design system. Built with Pico CSS.">
+  <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
+  <link rel="canonical" href="https://picocss.com/examples/preview/">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+  <title>BiritaShop</title>
+</head>
+
+<body>
+  <div class="w3-bar w3-black w3-xlarge">
+    <a href="/" class="w3-bar-item w3-button w3-mobile "> Inicio </a>
+    <a class="w3-bar-item w3-button w3-mobile" href="/cliente/adicionar">Adicionar Cliente</a>
+    <a class="w3-yellow w3-bar-item w3-button w3-mobile" href="/cliente/listar">Lista de Clientes</a>
+    <a class="w3-bar-item w3-button w3-mobile w3-right" href="/public/contato">Contato</a>
+    <a class="w3-bar-item w3-button w3-mobile w3-right" href="/public/sobre">Sobre</a>
+  </div>
+
+  <div style="padding:0 16px;">
+  <h1 class="text-center">Clientes</h1>
+  <div class="grid">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nome Completo</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">Cidade</th>
+          <th scope="col">CEP</th>
+          <th scope="col">Genero</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Remover</th>
+          <th scope="col">Dependentes</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr th:each="cliente : ${clientes}">
+          <th scope="grid" th:text="${cliente.id}"></th>
+          <td th:text="${cliente.nomeCompleto}"></td>
+          <td th:text="${cliente.telefone}"></td>
+          <td th:text="${cliente.cidade}"></td>
+          <td th:text="${cliente.CEP}"></td>
+          <td th:text="${cliente.genero}"></td>
+          <td><a th:href="@{editar/{id}(id=${cliente.id})}">Editar</a></td>
+          <td><a th:href="@{remover/{id}(id=${cliente.id})}">Remover</a></td>
+          <td><a th:href="@{/dependente/listar?clienteId={id}(id=${cliente.id})}">Visualizar</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

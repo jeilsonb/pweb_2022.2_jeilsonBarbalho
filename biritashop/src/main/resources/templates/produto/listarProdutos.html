@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A starter example with all elements and components used in Pico design system. Built with Pico CSS.">
+  <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
+  <link rel="canonical" href="https://picocss.com/examples/preview/">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+  <title>BiritaShop</title>
+</head>
+
+<body>
+  <div class="w3-bar w3-black w3-xlarge">
+    <a href="/" class="w3-bar-item w3-button w3-mobile"> Inicio </a>
+    <a class="w3-bar-item w3-button w3-mobile" href="/produto/adicionar">Adicionar Produto</a>
+    <a class="w3-yellow w3-bar-item w3-button w3-mobile" href="/produto/listar">Lista dos Produtos</a>
+    <a class="w3-bar-item w3-button w3-mobile w3-right" href="/public/contato">Contato</a>
+    <a class="w3-bar-item w3-button w3-mobile w3-right" href="/public/sobre">Sobre</a>
+  </div>
+
+  <div style="padding:0 16px;">
+    <h1 class="text-center">Produtos</h1>
+    <div class="grid">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Marca</th>
+          <th scope="col">Volume</th>
+          <th scope="col">Tipo Embalagem</th>
+          <th scope="col">Preço de Compra</th>
+          <th scope="col">Preço de Venda</th>
+          <th scope="col">Data Cadastro</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Remover</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr th:each="produto: ${produtos}">
+          <th scope="row" th:text="${produto.id}"></th>
+          <td th:text="${produto.nome}"></td>
+          <td th:text="${produto.marca}"></td>
+          <td th:text="${produto.volume} + 'mL'"></td>
+          <td th:text="${produto.tipoEmbalagem}"></td>
+          <td th:text="${produto.precoCompra} + 'R$'"></td>
+          <td th:text="${produto.precoVenda} + 'R$'"></td>
+          <td th:text="${#temporals.format(produto.dataCadastro, 'dd/MM/yyyy')}"></td>
+          <td><a th:href="@{editar/{id}(id=${produto.id})}">Editar</a></td>
+          <td><a th:href="@{remover/{id}(id=${produto.id})}">Remover</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
