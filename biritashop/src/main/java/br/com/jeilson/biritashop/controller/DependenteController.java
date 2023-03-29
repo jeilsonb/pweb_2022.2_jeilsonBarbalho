@@ -54,8 +54,7 @@ public class DependenteController {
 
     @GetMapping("/editar/{id}")
     public ModelAndView formEditarDependente(@PathVariable("id") Long id) {
-        Dependente dependente = this.dependenteRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("ID Inválido " + id));
+        Dependente dependente = this.dependenteRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID Inválido " + id));
         List<Cliente> clientes = this.clienteRepository.findAll();
         ModelAndView mav = new ModelAndView("/dependente/editarDependente");
         mav.addObject("clientes", clientes);

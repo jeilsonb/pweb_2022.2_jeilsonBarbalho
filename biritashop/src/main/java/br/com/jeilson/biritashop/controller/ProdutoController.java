@@ -49,8 +49,7 @@ public class ProdutoController {
 
     @GetMapping("/editar/{id}")
     public ModelAndView formEditarProduto(@PathVariable("id") Long id) {
-        Produto produto = this.produtoRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("ID Inválido " + id));
+        Produto produto = this.produtoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID Inválido " + id));
         ModelAndView mav = new ModelAndView("/produto/editarProduto");
         mav.addObject(produto);
         return mav;
@@ -64,8 +63,7 @@ public class ProdutoController {
 
     @GetMapping("/remover/{id}")
     public ModelAndView removerProduto(@PathVariable("id") Long id) {
-        Produto produto = this.produtoRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("ID Inválido " + id));
+        Produto produto = this.produtoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID Inválido " + id));
         this.produtoRepository.delete(produto);
         return new ModelAndView("redirect:/produto/listar");
     }

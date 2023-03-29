@@ -6,20 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A starter example with all elements and components used in Pico design system. Built with Pico CSS.">
     <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
-    <link rel="canonical" href="https://picocss.com/examples/preview/">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>BiritaShop</title>
 </head>
 
 <body>
-    <div class="w3-bar w3-black w3-xlarge">
-        <a href="/" class="w3-bar-item w3-button w3-mobile "> Inicio </a>
-        <a class="w3-yellow w3-bar-item w3-button w3-mobile" href="/dependente/adicionar">Adicionar Dependente</a>
-        <a class="w3-bar-item w3-button w3-mobile" href="/dependente/listar">Lista dos Dependentes</a>
-        <a class="w3-bar-item w3-button w3-mobile w3-right" href="/public/contato">Contato</a>
-        <a class="w3-bar-item w3-button w3-mobile w3-right" href="/public/sobre">Sobre</a>
-    </div>
+    <div class="w3-bar w3-black w3-mobile w3-xlarge">
+        <a href="/" class="w3-bar-item w3-button w3-mobile">BiritaShop</a>
+        <a href="/public/sobre" class="w3-bar-item w3-button w3-mobile w3-right">Sobre</a>
+        <a href="/public/contato" class="w3-bar-item w3-button w3-mobile w3-right">Contato</a>
+        
+        <div class="w3-dropdown-hover w3-mobile">
+          <button class="w3-button w3-bar-block w3-mobile">Cliente</button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="/cliente/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Cliente</a>
+            <a href="/cliente/listar" class="w3-bar-item w3-button w3-mobile">Lista de Clientes</a>
+          </div>
+        </div>
+    
+        <div class="w3-dropdown-hover w3-mobile">
+          <button class="w3-yellow w3-button w3-bar-block w3-mobile">Dependente</button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="/dependente/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Dependente</a>
+            <a href="/dependente/listar" class="w3-bar-item w3-button w3-mobile">Lista de Dependentes</a>
+          </div>
+        </div>
+    
+        <div class="w3-dropdown-hover w3-mobile">
+          <button class="w3-button w3-bar-block w3-mobile">Produto</button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="/produto/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Produto</a>
+            <a href="/produto/listar" class="w3-bar-item w3-button w3-mobile">Lista de Produtos</a>
+          </div>
+        </div>
+      </div>
 
     <div class="grid">
         <div style="padding:0 16px;">
@@ -75,6 +97,7 @@
             <br>
 
             <button class="btn btn-primary" type="submit">Adicionar</button>
+            <br>
             <button class="btn btn-secondary" type="reset">Limpar Campos</button>
 
             <p>*Campo Obrigatório</p>
