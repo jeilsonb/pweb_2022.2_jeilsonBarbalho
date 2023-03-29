@@ -55,7 +55,7 @@
 
                 <div>
                     <label for="telefone">Telefone*</label>
-                    <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="Telefone" th:field="*{telefone}" required>
+                    <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="(__) ____-____" th:field="*{telefone}" required>
                 </div>
 
             </div>
@@ -68,7 +68,7 @@
 
                 <div>
                     <label for="cep">CEP*</label>
-                    <input type="text" class="form-control" id="cep" name="CEP" placeholder="CEP" th:field="*{CEP}" required>
+                    <input type="text" class="form-control" id="cep" name="CEP" placeholder="_____-___" th:field="*{CEP}" required>
                 </div>
             </div>
 
@@ -102,6 +102,7 @@
             <br>
 
             <button class="btn btn-primary" type="submit">Adicionar</button>
+            <br>
             <button class="btn btn-secondary" type="reset">Limpar Campos</button>
 
             <p>*Campo Obrigatório</p>

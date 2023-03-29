@@ -46,8 +46,7 @@ public class ClienteController {
 
     @GetMapping("/editar/{id}")
     public ModelAndView formEditarCliente(@PathVariable("id") Long id) {
-        Cliente cliente = this.clienteRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("ID Inválido " + id));
+        Cliente cliente = this.clienteRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID Inválido " + id));
         ModelAndView mav = new ModelAndView("/cliente/editarCliente");
         mav.addObject(cliente);
         return mav;
@@ -61,8 +60,7 @@ public class ClienteController {
 
     @GetMapping("/remover/{id}")
     public ModelAndView removerCliente(@PathVariable("id") Long id) {
-        Cliente cliente = this.clienteRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("ID Inválido " + id));
+        Cliente cliente = this.clienteRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID Inválido " + id));
         this.clienteRepository.delete(cliente);
         return new ModelAndView("redirect:/cliente/listar");
     }

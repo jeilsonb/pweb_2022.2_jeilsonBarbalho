@@ -70,8 +70,7 @@ public class DependenteController {
 
     @GetMapping("/remover/{id}")
     public ModelAndView removerDependente(@PathVariable("id") Long id) {
-        Dependente dependente = this.dependenteRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("ID Inválido " + id));
+        Dependente dependente = this.dependenteRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID Inválido " + id));
         this.dependenteRepository.delete(dependente);
         return new ModelAndView("redirect:/dependente/listar");
     }

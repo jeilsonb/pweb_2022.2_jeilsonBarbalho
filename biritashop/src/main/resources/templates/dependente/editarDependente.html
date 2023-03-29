@@ -61,6 +61,7 @@
                     <label for="nomeCompleto">Nome Completo*</label>
                     <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto" placeholder="Nome Completo" th:field="*{nomeCompleto}" required>
                 </div>
+
                 <div>
                     <label for="dataNascimento">Data Nascimento*</label>
                     <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" placeholder="Data Nascimento xx/xx/xxxx" th:field="*{dataNascimento}" required>
@@ -76,12 +77,14 @@
                             Masculino
                         </label>
                     </div>
+
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="genero" id="feminino" value="Feminino" th:field="*{genero}">
                         <label class="form-check-label" for="feminino">
                             Feminino
                         </label>
                     </div>
+                    
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="genero" id="naoInformado" value="Não Informado" th:field="*{genero}">
                         <label class="form-check-label" for="naoInformado">
