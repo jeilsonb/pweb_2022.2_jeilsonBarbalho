@@ -41,12 +41,20 @@
             <a href="/produto/listar" class="w3-bar-item w3-button w3-mobile">Lista de Produtos</a>
           </div>
         </div>
+
+        <div class="w3-dropdown-hover w3-mobile">
+            <button class="w3-button w3-bar-block w3-mobile">Pedido</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+              <a href="/pedido/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Pedido</a>
+              <a href="/pedido/listar" class="w3-bar-item w3-button w3-mobile">Lista de Pedidos</a>
+            </div>
+        </div>
       </div>
 
     <div class="grid">
         <div style="padding:0 16px;">
         <form th:action="@{/produto/adicionar}" method="POST" th:object="${produto}">
-            <h1>Formulário do Produto</h1>
+            <h1>Adicionar Produto</h1>
             <div class="grid">
                 <div>
                     <label for="nome">Nome*</label>
@@ -78,7 +86,7 @@
             </div>
 
             <div class="row">
-                <legend class="col-form-label pt-0">Tipe de Embalagem*</legend>
+                <legend class="col-form-label pt-0">Tipo de Embalagem*</legend>
                 <div class="col-sm-10">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="tipoEmbalagem" id="platico" value="Plástico" th:field="*{tipoEmbalagem}">

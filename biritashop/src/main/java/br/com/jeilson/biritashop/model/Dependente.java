@@ -35,11 +35,9 @@ public class Dependente implements Serializable {
     private Long id;
     private String nomeCompleto;
     private String genero;
-
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataNascimento;
-    
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cliente_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)

@@ -27,7 +27,7 @@
         </div>
     
         <div class="w3-dropdown-hover w3-mobile">
-          <button class="w3-yellow w3-button w3-bar-block w3-mobile">Dependente</button>
+          <button class="w3-button w3-bar-block w3-mobile">Dependente</button>
           <div class="w3-dropdown-content w3-bar-block w3-card-4">
             <a href="/dependente/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Dependente</a>
             <a href="/dependente/listar" class="w3-bar-item w3-button w3-mobile">Lista de Dependentes</a>
@@ -43,73 +43,53 @@
         </div>
 
         <div class="w3-dropdown-hover w3-mobile">
-            <button class="w3-button w3-bar-block w3-mobile">Pedido</button>
+            <button class="w3-yellow w3-button w3-bar-block w3-mobile">Pedido</button>
             <div class="w3-dropdown-content w3-bar-block w3-card-4">
               <a href="/pedido/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Pedido</a>
               <a href="/pedido/listar" class="w3-bar-item w3-button w3-mobile">Lista de Pedidos</a>
             </div>
         </div>
-      </div>
+    </div>
 
     <div class="grid">
         <div style="padding:0 16px;">
-        <form th:action="@{/dependente/adicionar}" method="POST" th:object="${dependente}">
-            <h1>Adicionar Dependente</h1>
+        <form th:action="@{/pedido/listar}" method="GET" th:object="${cliente}">
+            <h1>Clientes Cadastrados</h1>
             <div class="row">
-                <h2>Clientes Cadastrados</h2>
-                <select class="form-select" name="cliente">
-                    <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nomeCompleto}">
-                    </option>
-                </select>
-            </div>
-
-            <h2>Dependente</h2>
-            <div class="grid">
-                <div>
-                    <label for="nomeCompleto">Nome Completo*</label>
-                    <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto" placeholder="Nome Completo" th:field="*{nomeCompleto}" required>
-                </div>
-
-                <div>
-                    <label for="dataNascimento">Data Nascimento*</label>
-                    <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" placeholder="Data Nascimento xx/xx/xxxx" th:field="*{dataNascimento}" required>
+                <div class="col-sm-6">
+                    <select class="form-select" name="clienteId">
+                        <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nomeCompleto}" th:selected="${cliente.id} == ${clienteId}"></option>
+                        </option>
+                    </select>
                 </div>
             </div>
 
-            <div class="row">
-                <legend class="col-form-label pt-0">Informe o Gênero*</legend>
-                <div class="col-sm-10">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="genero" id="masculino" value="Masculino" th:field="*{genero}">
-                        <label class="form-check-label" for="masculino">
-                            Masculino
-                        </label>
-                    </div>
+            <button class="btn btn-outline-primary col-sm-2 mt-2 mb-2" type="submit">
+                Lista dos Pedidos
+            </button>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="genero" id="feminino" value="Feminino" th:field="*{genero}">
-                        <label class="form-check-label" for="feminino">
-                            Feminino
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="genero" id="naoInformado" value="Não Informado" th:field="*{genero}">
-                        <label class="form-check-label" for="naoInformado">
-                            Não Informado
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <br>
-
-            <button class="btn btn-primary" type="submit">Adicionar</button>
-            <br>
-            <button class="btn btn-secondary" type="reset">Limpar Campos</button>
-
-            <p>*Campo Obrigatório</p>
         </form>
+        <h1>Pedidos</h1>
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Forma Pagamento</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Remover</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pedido : ${pedidos}">
+                    <th scope="row" th:text="${pedido.id}"></th>
+                    <td th:text="${pedido.formaPagamento}"></td>
+                    <td th:text="${#temporals.format(pedido.data, 'dd/MM/yyyy')}"></td>
+                    <td> <font color="blue"> <a th:href="@{editar/{id}(id=${pedido.id})}">Editar</a></td>
+                    <td> <font color="blue"> <a th:href="@{remover/{id}(id=${pedido.id})}">Remover</a></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 

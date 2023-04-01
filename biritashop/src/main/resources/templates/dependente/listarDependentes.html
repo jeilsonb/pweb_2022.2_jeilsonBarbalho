@@ -41,12 +41,21 @@
             <a href="/produto/listar" class="w3-bar-item w3-button w3-mobile">Lista de Produtos</a>
           </div>
         </div>
+
+        <div class="w3-dropdown-hover w3-mobile">
+          <button class="w3-button w3-bar-block w3-mobile">Pedido</button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="/pedido/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Pedido</a>
+            <a href="/pedido/listar" class="w3-bar-item w3-button w3-mobile">Lista de Pedidos</a>
+          </div>
+        </div>
       </div>
 
     <div class="grid">
         <div style="padding:0 16px;">
-        <form th:action="@{/dependente/listar}" method="GET" th:object="${cliente}">
-            <h1>Lista de Clientes</h1>
+          <h1>Lista dos Dependentes Cadastrados</h1>
+          <form th:action="@{/dependente/listar}" method="GET" th:object="${cliente}">
+            <h1>Clientes Cadastrados</h1>
             <div class="row">
                 <select class="form-select" name="clienteId">
                     <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nomeCompleto}" th:selected="${cliente.id} == ${clienteId}">
@@ -57,10 +66,9 @@
             <div class="row mt-1">
                 <button class="btn btn-primary" type="submit">Buscar</button>
             </div>
+          </form>
 
-        </form>
-
-        <h1 class="text-center">Dependentes</h1>
+        <h1>Dependentes</h1>
         <table class="table">
             <thead>
                 <tr>
@@ -72,6 +80,7 @@
                     <th scope="col">Remover</td>
                 </tr>
             </thead>
+            
             <tbody>
                 <tr th:each="dependente : ${dependentes}">
                     <th scope="row" th:text="${dependente.id}"></td>

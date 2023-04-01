@@ -33,7 +33,6 @@ public class Produto implements Serializable {
     private String tipoEmbalagem;
     private BigDecimal precoCompra;
     private BigDecimal precoVenda;
-    
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataCadastro;

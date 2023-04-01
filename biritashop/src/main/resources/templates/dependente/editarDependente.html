@@ -41,14 +41,22 @@
             <a href="/produto/listar" class="w3-bar-item w3-button w3-mobile">Lista de Produtos</a>
           </div>
         </div>
-      </div>
+
+        <div class="w3-dropdown-hover w3-mobile">
+            <button class="w3-button w3-bar-block w3-mobile">Pedido</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+              <a href="/pedido/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Pedido</a>
+              <a href="/pedido/listar" class="w3-bar-item w3-button w3-mobile">Lista de Pedidos</a>
+            </div>
+        </div>
+    </div>
 
     <div class="grid">
         <div style="padding:0 16px;">
         <form th:action="@{/dependente/editar/{id}(id=${dependente.id})}" method="POST" th:object="${dependente}">
-            <h1>Formulário do Dependente</h1>
+            <h1>Editar Dependente</h1>
             <div class="row">
-                <h2>Cliente</h2>
+                <h2>Clientes Cadastrados</h2>
                 <select class="form-select" name="cliente">
                     <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nomeCompleto}">
                     </option>

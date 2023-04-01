@@ -18,9 +18,11 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -33,11 +35,9 @@ public class ItemPedido implements Serializable {
     private Long id;
     private Long quantidade;
     private BigDecimal valorUnitario;
-
     @ManyToOne
 	@JoinColumn(name = "produto_id")
     private Produto produto;
-    
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "pedido_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
