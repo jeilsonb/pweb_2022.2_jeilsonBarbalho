@@ -14,7 +14,7 @@
 
 <body>
     <div class="w3-bar w3-black w3-mobile w3-xlarge">
-        <a href="/" class="w3-bar-item w3-button w3-mobile">BiritaShop</a>
+        <a href="/" class="w3-bar-item w3-button w3-mobile">Home</a>
         <a href="/public/sobre" class="w3-bar-item w3-button w3-mobile w3-right">Sobre</a>
         <a href="/public/contato" class="w3-bar-item w3-button w3-mobile w3-right">Contato</a>
         
@@ -54,7 +54,7 @@
     <div class="grid">
         <div style="padding:0 16px;">
         <form th:action="@{/cliente/editar/{id}(id=${cliente.id})}" method="POST" th:object="${cliente}">
-            <h1>Editar Cliente</h1>
+            <h1>Editar as Informações do Cliente</h1>
             <div class="grid">
                 <div>
                     <label for="nomeCompleto">Nome Completo*</label>
@@ -108,7 +108,7 @@
 
             <br>
 
-            <button class="btn btn-primary" type="submit">Adicionar</button>
+            <button class="btn btn-primary" type="submit">Salvar Alterações</button>
             <br>
             <button class="btn btn-secondary" type="reset">Limpar Campos</button>
 

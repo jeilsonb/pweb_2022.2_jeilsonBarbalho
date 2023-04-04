@@ -14,7 +14,7 @@
 
 <body>
     <div class="w3-bar w3-black w3-mobile w3-xlarge">
-        <a href="/" class="w3-bar-item w3-button w3-mobile">BiritaShop</a>
+        <a href="/" class="w3-bar-item w3-button w3-mobile">Home</a>
         <a href="/public/sobre" class="w3-bar-item w3-button w3-mobile w3-right">Sobre</a>
         <a href="/public/contato" class="w3-bar-item w3-button w3-mobile w3-right">Contato</a>
         
@@ -53,9 +53,8 @@
 
     <div class="grid">
         <div style="padding:0 16px;">
-          <h1>Lista dos Dependentes Cadastrados</h1>
           <form th:action="@{/dependente/listar}" method="GET" th:object="${cliente}">
-            <h1>Clientes Cadastrados</h1>
+            <h1>Escolha Um Cliente</h1>
             <div class="row">
                 <select class="form-select" name="clienteId">
                     <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nomeCompleto}" th:selected="${cliente.id} == ${clienteId}">
@@ -64,11 +63,11 @@
             </div>
 
             <div class="row mt-1">
-                <button class="btn btn-primary" type="submit">Buscar</button>
+                <button class="btn btn-primary" type="submit">Buscar Dependentes</button>
             </div>
           </form>
 
-        <h1>Dependentes</h1>
+        <h1>Lista dos Dependentes Cadastrados</h1>
         <table class="table">
             <thead>
                 <tr>

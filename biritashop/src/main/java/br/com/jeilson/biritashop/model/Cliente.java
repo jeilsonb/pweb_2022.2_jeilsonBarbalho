@@ -31,6 +31,4 @@ public class Cliente implements Serializable {
     private String CEP;
     @OneToMany(mappedBy = "cliente")
     private List<Dependente> dependentes;
-    @OneToMany(mappedBy = "cliente")
-    private List<Pedido> pedidos;
 }
