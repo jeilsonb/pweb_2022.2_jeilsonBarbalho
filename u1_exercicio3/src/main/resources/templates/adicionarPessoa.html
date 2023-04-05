@@ -12,32 +12,27 @@
     <!-- Pico.css -->
     <link rel="stylesheet" th:href="@{/assets/pico.min.css}">
     <link rel="stylesheet" th:href="@{/assets/w3.css}">
-
 </head>
 
 <body>
     <div class="w3-bar w3-black w3-xlarge">
-        <a href="/" class="w3-bar-item w3-button w3-mobile "> Inicio </a>
+        <a href="/" class="w3-bar-item w3-button w3-mobile "> Início </a>
         <a href="/adicionarPessoa" class="w3-teal w3-bar-item w3-button w3-mobile"> Adicionar Pessoa </a>
         <a href="/listarPessoa" class="w3-bar-item w3-button w3-mobile"> Listar Pessoa </a>
         <a href="/public/contato.html" class="w3-bar-item w3-button w3-mobile w3-right"> Contato </a> 
         <a href="/public/sobre.html" class="w3-bar-item w3-button w3-mobile w3-right"> Sobre o Site </a> 
         <a href="/public/noticias.html" class="w3-bar-item w3-button w3-mobile w3-right"> Notícias </a>      
-
     </div>
 
     <div style="padding:0 16px;">
-
         <h1> Fomulário para cadastrar pessoas: </h1>
-    
         <form th:action="@{/adicionarPessoa}" method="POST" th:object="${pessoa}">
-
             <div class ="grid">
                 <label for="nome"> Nome completo*:
                     <input  type ="text" id ="nome" name ="nome" placeholder="Nome Completo" th:field="*{nome}" required>
                 </label>
                 
-                <label for="nome"> e-mail*:
+                <label for="email"> e-mail*:
                     <input  type ="email" id ="mail" name ="email" placeholder="nome@dominio.com" th:field="*{email}" required> 
                     <small> Nunca Divulgaremos </small>
                 </label>
@@ -45,7 +40,6 @@
                 <label for="dataNascimento"> Data de nascimento*: 
                     <input type ="date" id ="dataNascimento" nome ="dataNascimento" placeholder="dd/mm/aaaa" th:field="*{dataNascimento}" required>
                 </label>
-               
             </div>
 
             <legend> Gênero*: </legend>
@@ -60,20 +54,15 @@
             <label for="Não Informado">
                 <input type="radio" id="Não Informado" name="genero" value="Não Informado" required checked> Não Informado
             </label>
-        
-            </div>
 
             <div class ="grid">
                 <div> <button type ="submit"> Cadastrar! </button> </div>
                 <div> <button type ="reset" class="secondary"> Limpar! </button> </div>
-
             </div>
 
             <p> *Campo Obrigatório </p>
-        
         </form>
-
     </div>
-
 <body>
+
 </html>

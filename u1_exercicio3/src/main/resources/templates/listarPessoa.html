@@ -12,28 +12,23 @@
     <!-- Pico.css -->
     <link rel="stylesheet" href="/assets/w3.css">
     <link rel="stylesheet" href="/assets/pico.min.css">
-
 </head>
 
 <body>
     <div class="w3-bar w3-black w3-xlarge">
-        <a href="/" class="w3-bar-item w3-button w3-mobile "> Inicio </a>
+        <a href="/" class="w3-bar-item w3-button w3-mobile "> Início </a>
         <a href="/adicionarPessoa" class="w3-bar-item w3-button w3-mobile"> Adicionar Pessoa </a>
         <a href="/listarPessoa" class="w3-teal w3-bar-item w3-button w3-mobile"> Listar Pessoa </a>
         <a href="/public/contato.html" class="w3-bar-item w3-button w3-mobile w3-right"> Contato </a> 
         <a href="/public/sobre.html" class="w3-bar-item w3-button w3-mobile w3-right"> Sobre o Site </a> 
         <a href="/public/noticias.html" class="w3-bar-item w3-button w3-mobile w3-right"> Notícias </a>      
-
     </div>
 
     <center>
-    
         <h1> Lista de pessoas </h1>
-
     </center>
 
     <div style="padding:0 16px;">
-    
         <table>
             <tr>
                 <th> Nome completo </th>
@@ -42,7 +37,6 @@
                 <th> Gênero </th>
                 <th> Editar </th>
                 <th> Removedor </th>
-       
             </tr>
 
             <tr th:each="umaPessoa: ${todasAsPessoas}">
@@ -50,16 +44,11 @@
                 <td> <a th:href="'mailto:'+${umaPessoa.email}" th:text="${umaPessoa.email}"> </a> </td>
                 <td th:text="${#temporals.format(umaPessoa.dataNascimento, 'dd/MM/yyyy')}"> </td> 
                 <td th:text="${umaPessoa.genero}"> </td>
-
                 <td> <a  th:href="@{/editar/{id}(id=${umaPessoa.id})}"> Editar </a> </td>
                 <td> <a  th:href="@{/remover/{id}(id=${umaPessoa.id})}" > Remover </a> </td>
-       
             </tr>
-    
         </table>
-    
     </div>
-
 </body>
 
 </html>
