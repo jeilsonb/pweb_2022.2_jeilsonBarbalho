@@ -54,7 +54,7 @@
     <div class="grid">
         <div style="padding:0 16px;">
           <form th:action="@{/dependente/listar}" method="GET" th:object="${cliente}">
-            <h1>Escolha Um Cliente</h1>
+            <h1>Escolha um Cliente</h1>
             <div class="row">
                 <select class="form-select" name="clienteId">
                     <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nomeCompleto}" th:selected="${cliente.id} == ${clienteId}">

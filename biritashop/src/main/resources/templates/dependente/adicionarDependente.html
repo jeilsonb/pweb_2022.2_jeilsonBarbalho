@@ -55,7 +55,7 @@
         <div style="padding:0 16px;">
         <form th:action="@{/dependente/adicionar}" method="POST" th:object="${dependente}">
             <div class="row">
-                <h1>Escolha Um Cliente</h1>
+                <h1>Escolha um Cliente</h1>
                 <select class="form-select" name="cliente">
                     <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nomeCompleto}"></option>
                 </select>
