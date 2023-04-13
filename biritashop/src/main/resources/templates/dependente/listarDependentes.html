@@ -2,96 +2,97 @@
 <html lang="pt-br" data-theme="light">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A starter example with all elements and components used in Pico design system. Built with Pico CSS.">
-    <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>BiritaShop</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A starter example with all elements and components used in Pico design system. Built with Pico CSS.">
+  <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>BiritaShop</title>
 </head>
 
 <body>
-    <div class="w3-bar w3-black w3-mobile w3-xlarge">
-        <a href="/" class="w3-bar-item w3-button w3-mobile">Home</a>
-        <a href="/public/sobre" class="w3-bar-item w3-button w3-mobile w3-right">Sobre</a>
-        <a href="/public/contato" class="w3-bar-item w3-button w3-mobile w3-right">Contato</a>
+  <div class="w3-bar w3-black w3-mobile w3-xlarge">
+    <a href="/" class="w3-bar-item w3-button w3-mobile">Home</a>
+    <a href="/public/sobre" class="w3-bar-item w3-button w3-mobile w3-right">Sobre</a>
+    <a href="/public/contato" class="w3-bar-item w3-button w3-mobile w3-right">Contato</a>
         
-        <div class="w3-dropdown-hover w3-mobile">
-          <button class="w3-button w3-bar-block w3-mobile">Cliente</button>
-          <div class="w3-dropdown-content w3-bar-block w3-card-4">
-            <a href="/cliente/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Cliente</a>
-            <a href="/cliente/listar" class="w3-bar-item w3-button w3-mobile">Lista de Clientes</a>
-          </div>
-        </div>
-    
-        <div class="w3-dropdown-hover w3-mobile">
-          <button class="w3-yellow w3-button w3-bar-block w3-mobile">Dependente</button>
-          <div class="w3-dropdown-content w3-bar-block w3-card-4">
-            <a href="/dependente/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Dependente</a>
-            <a href="/dependente/listar" class="w3-bar-item w3-button w3-mobile">Lista de Dependentes</a>
-          </div>
-        </div>
-    
-        <div class="w3-dropdown-hover w3-mobile">
-          <button class="w3-button w3-bar-block w3-mobile">Produto</button>
-          <div class="w3-dropdown-content w3-bar-block w3-card-4">
-            <a href="/produto/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Produto</a>
-            <a href="/produto/listar" class="w3-bar-item w3-button w3-mobile">Lista de Produtos</a>
-          </div>
-        </div>
-
-        <div class="w3-dropdown-hover w3-mobile">
-          <button class="w3-button w3-bar-block w3-mobile">Pedido</button>
-          <div class="w3-dropdown-content w3-bar-block w3-card-4">
-            <a href="/pedido/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Pedido</a>
-            <a href="/pedido/listar" class="w3-bar-item w3-button w3-mobile">Lista de Pedidos</a>
-          </div>
-        </div>
+    <div class="w3-dropdown-hover w3-mobile">
+      <button class="w3-button w3-bar-block w3-mobile">Cliente</button>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="/cliente/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Cliente</a>
+        <a href="/cliente/listar" class="w3-bar-item w3-button w3-mobile">Lista de Clientes</a>
       </div>
-
-    <div class="grid">
-        <div style="padding:0 16px;">
-          <form th:action="@{/dependente/listar}" method="GET" th:object="${cliente}">
-            <h1>Escolha um Cliente</h1>
-            <div class="row">
-                <select class="form-select" name="clienteId">
-                    <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nomeCompleto}" th:selected="${cliente.id} == ${clienteId}">
-                    </option>
-                </select>
-            </div>
-
-            <div class="row mt-1">
-                <button class="btn btn-primary" type="submit">Buscar Dependentes</button>
-            </div>
-          </form>
-
-        <h1>Lista dos Dependentes Cadastrados</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</td>
-                    <th scope="col">Nome Completo</td>
-                    <th scope="col">Data de Nascimento</td>
-                    <th scope="col">Gênero</td>
-                    <th scope="col">Editar</td>
-                    <th scope="col">Remover</td>
-                </tr>
-            </thead>
-            
-            <tbody>
-                <tr th:each="dependente : ${dependentes}">
-                    <th scope="row" th:text="${dependente.id}"></td>
-                    <td th:text="${dependente.nomeCompleto}"></td>
-                    <td th:text="${#temporals.format(dependente.dataNascimento, 'dd/MM/yyyy')}"></td>
-                    <td th:text="${dependente.genero}"></td>
-                    <td> <font color="blue"> <a th:href="@{editar/{id}(id=${dependente.id})}">Editar</a></td>
-                    <td> <font color="blue"> <a th:href="@{remover/{id}(id=${dependente.id})}">Remover</a></td>
-                </tr>
-            </tbody>
-        </table>
     </div>
+    
+    <div class="w3-dropdown-hover w3-mobile">
+      <button class="w3-yellow w3-button w3-bar-block w3-mobile">Dependente</button>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="/dependente/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Dependente</a>
+        <a href="/dependente/listar" class="w3-bar-item w3-button w3-mobile">Lista de Dependentes</a>
+      </div>
+    </div>
+    
+    <div class="w3-dropdown-hover w3-mobile">
+      <button class="w3-button w3-bar-block w3-mobile">Produto</button>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="/produto/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Produto</a>
+        <a href="/produto/listar" class="w3-bar-item w3-button w3-mobile">Lista de Produtos</a>
+      </div>
+    </div>
+
+    <div class="w3-dropdown-hover w3-mobile">
+      <button class="w3-button w3-bar-block w3-mobile">Pedido</button>
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="/pedido/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Pedido</a>
+        <a href="/pedido/listar" class="w3-bar-item w3-button w3-mobile">Lista de Pedidos</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div style="padding:0 16px;">
+      <form th:action="@{/dependente/listar}" method="GET" th:object="${cliente}">
+        <h1>Escolha um Cliente</h1>
+        <div class="row">
+          <select class="form-select" name="clienteId">
+            <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nomeCompleto}" th:selected="${cliente.id} == ${clienteId}"></option>
+          </select>
+        </div>
+
+        <div class="row mt-1">
+          <button class="btn btn-primary" type="submit">Buscar Dependentes</button>
+        </div>
+      </form>
+
+      <h1>Lista dos Dependentes Cadastrados</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</td>
+            <th scope="col">Nome Completo</td>
+            <th scope="col">Data de Nascimento</td>
+            <th scope="col">Gênero</td>
+            <th scope="col">Editar</td>
+            <th scope="col">Remover</td>
+          </tr>
+        </thead>
+            
+        <tbody>
+          <tr>
+            <tr th:each="dependente : ${dependentes}">
+            <th scope="row" th:text="${dependente.id}"></td>
+            <td th:text="${dependente.nomeCompleto}"></td>
+            <td th:text="${#temporals.format(dependente.dataNascimento, 'dd/MM/yyyy')}"></td>
+            <td th:text="${dependente.genero}"></td>
+            <td> <font color="blue"> <a th:href="@{editar/{id}(id=${dependente.id})}">Editar</a></td>
+            <td> <font color="blue"> <a th:href="@{remover/{id}(id=${dependente.id})}">Remover</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </body>
 
 </html>
