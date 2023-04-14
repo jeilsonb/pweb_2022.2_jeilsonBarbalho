@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A starter example with all elements and components used in Pico design system. Built with Pico CSS.">
+    <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>BiritaShop</title>
+</head>
+
+<body>
+    <div class="w3-bar w3-black w3-mobile w3-xlarge">
+        <a href="/" class="w3-bar-item w3-button w3-mobile">Home</a>
+        <a href="/public/sobre" class="w3-bar-item w3-button w3-mobile w3-right">Sobre</a>
+        <a href="/public/contato" class="w3-bar-item w3-button w3-mobile w3-right">Contato</a>
+        
+        <div class="w3-dropdown-hover w3-mobile">
+            <button class="w3-button w3-bar-block w3-mobile">Cliente</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="/cliente/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Cliente</a>
+                <a href="/cliente/listar" class="w3-bar-item w3-button w3-mobile">Lista de Clientes</a>
+            </div>
+        </div>
+    
+        <div class="w3-dropdown-hover w3-mobile">
+            <button class="w3-button w3-bar-block w3-mobile">Dependente</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="/dependente/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Dependente</a>
+                <a href="/dependente/listar" class="w3-bar-item w3-button w3-mobile">Lista de Dependentes</a>
+            </div>
+        </div>
+    
+        <div class="w3-dropdown-hover w3-mobile">
+            <button class="w3-button w3-bar-block w3-mobile">Produto</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="/produto/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Produto</a>
+                <a href="/produto/listar" class="w3-bar-item w3-button w3-mobile">Lista de Produtos</a>
+            </div>
+        </div>
+
+        <div class="w3-dropdown-hover w3-mobile">
+            <button class="w3-yellow w3-button w3-bar-block w3-mobile">Pedido</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="/pedido/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Pedido</a>
+                <a href="/pedido/listar" class="w3-bar-item w3-button w3-mobile">Lista de Pedidos</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div style="padding:0 16px;">
+            <form th:action="@{/pedido/editar/{id}(id=${pedido.id})}" method="POST" th:object="${pedido}">
+            <div class="row">
+                <h1>Escolha um Cliente</h1>
+                <select class="form-select" name="cliente">
+                    <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nomeCompleto}"></option>
+                </select>
+            </div>
+
+            <h1>Editar as Informações do Pedido</h1>
+            <div class="grid">
+                <div>
+                    <label for="nomeProduto">Nome do Produto*</label>
+                    <input type="text" class="form-control" id="nomeProduto" name="nomeProduto" placeholder="Nome do Produto" th:field="*{nomeProduto}" required>
+                </div>
+
+                <div>
+                    <label for="marcaProduto">Marca do Produto*</label>
+                    <input type="text" class="form-control" id="marcaProduto" name="marcaProduto" placeholder="Marca do Produto" th:field="*{marcaProduto}" required>
+                </div>
+
+                <div>
+                    <label for="quantidadeProduto">Quantidade Desejada*</label>
+                    <input type="text" class="form-control" id="quantidadeProduto" name="quantidadeProduto" placeholder="Quantidade Desejada" th:field="*{quantidadeProduto}" required>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <label for="valorTotal">Valor Total da Compra*</label>
+                    <input type="text" class="form-control" id="valorTotal" name="valorTotal" placeholder="R$" th:field="*{valorTotal}" required>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <label for="dataDoPedido">Data da Compra*</label>
+                    <input type="date" class="form-control" id="dataDoPedido" name="dataDoPedido" placeholder="Data Pedido xx/xx/xxxx" th:field="*{dataDoPedido}" required>
+                </div>
+            </div>
+
+            <div class="row">
+                <legend class="col-form-label pt-0">Forma de Pagamento*</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="formaDePagamento" id="dinheiro" value="Dinheiro" th:field="*{formaDePagamento}">
+                        <label class="form-check-label" for="dinheiro">
+                            Dinheiro
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="formaDePagamento" id="credito" value="Crédito" th:field="*{formaDePagamento}">
+                        <label class="form-check-label" for="credito">
+                            Crédito
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="formaDePagamento" id="pix" value="Pix" th:field="*{formaDePagamento}">
+                        <label class="form-check-label" for="pix">
+                            Pix
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <!--Botões de Confirmação-->
+            <!--<button class="btn btn-primary" type="submit">Salvar Alterações</button>-->
+            <!--<br>-->
+            <!--<button class="btn btn-secondary" type="reset">Limpar Campos</button>-->
+            
+            <div class="grid">
+                <input type="submit" value="Adicionar"/>
+                <input type="reset" value="Limpar Campos">
+            </div>
+
+            <p>*Campo Obrigatório</p>
+        </form>
+    </div>
+</body>
+
+</html>

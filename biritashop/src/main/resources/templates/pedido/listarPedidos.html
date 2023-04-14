@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A starter example with all elements and components used in Pico design system. Built with Pico CSS.">
+    <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>BiritaShop</title>
+</head>
+
+<body>
+    <div class="w3-bar w3-black w3-mobile w3-xlarge">
+        <a href="/" class="w3-bar-item w3-button w3-mobile">Home</a>
+        <a href="/public/sobre" class="w3-bar-item w3-button w3-mobile w3-right">Sobre</a>
+        <a href="/public/contato" class="w3-bar-item w3-button w3-mobile w3-right">Contato</a>
+        
+        <div class="w3-dropdown-hover w3-mobile">
+            <button class="w3-button w3-bar-block w3-mobile">Cliente</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="/cliente/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Cliente</a>
+                <a href="/cliente/listar" class="w3-bar-item w3-button w3-mobile">Lista de Clientes</a>
+            </div>
+        </div>
+    
+        <div class="w3-dropdown-hover w3-mobile">
+            <button class="w3-button w3-bar-block w3-mobile">Dependente</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="/dependente/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Dependente</a>
+                <a href="/dependente/listar" class="w3-bar-item w3-button w3-mobile">Lista de Dependentes</a>
+            </div>
+        </div>
+    
+        <div class="w3-dropdown-hover w3-mobile">
+            <button class="w3-button w3-bar-block w3-mobile">Produto</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="/produto/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Produto</a>
+                <a href="/produto/listar" class="w3-bar-item w3-button w3-mobile">Lista de Produtos</a>
+            </div>
+        </div>
+
+        <div class="w3-dropdown-hover w3-mobile">
+            <button class="w3-yellow w3-button w3-bar-block w3-mobile">Pedido</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="/pedido/adicionar" class="w3-bar-item w3-button w3-mobile">Adicionar Pedido</a>
+                <a href="/pedido/listar" class="w3-bar-item w3-button w3-mobile">Lista de Pedidos</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div style="padding:0 16px;">
+        <form th:action="@{/pedido/listar}" method="GET" th:object="${cliente}">
+            <h1>Escolha um Cliente</h1>
+            <div class="row">
+                <div class="col-sm-6">
+                    <select class="form-select" name="clienteId">
+                        <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nomeCompleto}" th:selected="${cliente.id} == ${clienteId}"></option>
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn btn-outline-primary col-sm-2 mt-2 mb-2" type="submit">
+                Buscar Pedidos
+            </button>
+        </form>
+
+        <h1>Lista dos Pedidos Cadastrados</h1>
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome do Produto</th>
+                    <th scope="col">Marca do Produto</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Forma de Pagamento</th>
+                    <th scope="col">Valor Total</th>
+                    <th scope="col">Data da Compra</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Remover</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr>
+                    <tr th:each="pedido : ${pedidos}">
+                    <th scope="row" th:text="${pedido.id}"></td>
+                    <td th:text="${pedido.nomeProduto}"></td>
+                    <td th:text="${pedido.marcaProduto}"></td>
+                    <td th:text="${pedido.quantidadeProduto}"></td>
+                    <td th:text="${pedido.formaDePagamento}"></td>
+                    <td th:text="${pedido.valorTotal} + 'R$'"></td>
+                    <td th:text="${#temporals.format(pedido.dataDoPedido, 'dd/MM/yyyy')}"></td>
+                    <td> <font color="blue"> <a th:href="@{editar/{id}(id=${pedido.id})}">Editar</a></td>
+                    <td> <font color="blue"> <a th:href="@{remover/{id}(id=${pedido.id})}">Remover</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

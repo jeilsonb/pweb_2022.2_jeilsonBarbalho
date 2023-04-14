@@ -57,13 +57,13 @@
             <h1>Adicionar Produto</h1>
             <div class="grid">
                 <div>
-                    <label for="nome">Nome*</label>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" th:field="*{nome}" required>
+                    <label for="nome">Nome do Produto*</label>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do Produto" th:field="*{nome}" required>
                 </div>
 
                 <div>
-                    <label for="marca">Marca*</label>
-                    <input type="text" class="form-control" id="marca" name="marca" placeholder="Marca" th:field="*{marca}" required>
+                    <label for="marca">Marca do Produto*</label>
+                    <input type="text" class="form-control" id="marca" name="marca" placeholder="Marca do Produto" th:field="*{marca}" required>
                 </div>
 
                 <div>
@@ -112,9 +112,15 @@
             
             <br>
 
-            <button class="btn btn-primary" type="submit">Adicionar</button>
-            <br>
-            <button class="btn btn-secondary" type="reset">Limpar Campos</button>
+            <!--Botões de Confirmação-->
+            <!--<button class="btn btn-primary" type="submit">Adicionar</button>-->
+            <!--<br>-->
+            <!--<button class="btn btn-secondary" type="reset">Limpar Campos</button>-->
+            
+            <div class="grid">
+                <input type="submit" value="Adicionar"/>
+                <input type="reset" value="Limpar Campos">
+            </div>
 
             <p>*Campo Obrigatório</p>
         </form>
